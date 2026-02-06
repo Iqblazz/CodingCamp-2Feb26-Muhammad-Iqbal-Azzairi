@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-200">
+
+    <div class="max-w-3xl w-full mx-auto bg-white p-8 rounded-2xl shadow-xl border border-slate-300">
+        
+        <header class="mb-8 border-b border-slate-200 pb-4 text-center">
+            <h1 class="text-3xl font-black text-slate-800 tracking-tight">Todo List</h1>
+        </header>
+
+        <section class="mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <input class="border-2 border-slate-200 p-3 rounded-xl focus:outline-none focus:border-pink-500 bg-slate-50" 
+                       type="text" id="todo-input" placeholder="Add a todo...">
+                <input class="border-2 border-slate-200 p-3 rounded-xl focus:outline-none focus:border-pink-500 text-slate-600 bg-slate-50" 
+                       type="date" id="todo-date">
+            </div>
+            <button onclick="addTodo()" class="w-full bg-pink-600 text-white font-bold p-3 rounded-xl hover:bg-pink-700 transition-all shadow-md active:scale-95 flex justify-center items-center">
+                <i class="fa-solid fa-plus mr-2"></i> 
+            </button>
+        </section>
+
+        <section class="flex justify-between items-center mb-6 relative">
+            <div class="relative">
+                <button onclick="toggleDropdown()" class="border-2 border-slate-800 text-slate-800 font-bold py-2 px-6 rounded-lg bg-white hover:bg-slate-100 flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-filter text-sm"></i> FILTER
+                </button>
+                <div id="dropdown-menu" class="hidden absolute mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-xl z-20 overflow-hidden">
+                    <div onclick="pilihFilter('all')" class="block px-4 py-3 text-slate-700 hover:bg-pink-50 cursor-pointer font-medium border-b border-slate-100">All Tasks</div>
+                    <div onclick="pilihFilter('pending')" class="block px-4 py-3 text-slate-700 hover:bg-pink-50 cursor-pointer font-medium border-b border-slate-100">Pending</div>
+                    <div onclick="pilihFilter('completed')" class="block px-4 py-3 text-slate-700 hover:bg-pink-50 cursor-pointer font-medium">Completed</div>
+                </div>
+            </div>
+            <button onclick="deleteAll()" class="bg-red-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-red-600 transition-colors shadow-sm text-sm">
+                DELETE ALL
+            </button>
+        </section>
+
+        <div class="grid grid-cols-12 gap-2 text-xs font-bold text-white uppercase tracking-wider mb-0 px-4 py-3 bg-pink-600 rounded-t-xl">
+            <div class="col-span-5">TASK</div>
+            <div class="col-span-3 text-center">DUE DATE</div>
+            <div class="col-span-2 text-center">STATUS</div>
+            <div class="col-span-2 text-center">ACTIONS</div>
+        </div>
+
+        <ul id="todo-list" class="space-y-1 bg-slate-50 p-2 rounded-b-xl border-x border-b border-slate-200">
+            </ul>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
